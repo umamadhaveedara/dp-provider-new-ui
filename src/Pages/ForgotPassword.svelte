@@ -1,26 +1,16 @@
 <script>
-  import OuterHeader from "../Components/OuterHeader.svelte";
-  import Alert from "../Components/Alert.svelte";
   import {
+    Button,
+    Helper,
     Input,
     Label,
-    Helper,
-    Button,
-    Checkbox,
-    A,
-    Spinner,
+    Spinner
   } from "flowbite-svelte";
-  import {
-    EyeOutline,
-    EyeSlashOutline,
-    InfoCircleSolid,
-  } from "flowbite-svelte-icons";
-  import { fly } from "svelte/transition";
-  import { alert, showAlerts } from "../Stores/alertStore";
+  import OuterHeader from "../Components/OuterHeader.svelte";
+  import { showAlerts } from "../Stores/alertStore";
+  import { isValidEmail } from "./Validations/validation";
   let email = "";
-  let show = false;
   let showLoader = false;
-  let showAlert = false;
   $: isDisabled = !email;
   let errors = { email: "" };
 
@@ -30,8 +20,7 @@
     if (email.trim() === "") {
       errors.email = "Email is required";
     } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
+      if (!isValidEmail(email)) {
         errors.email = "Please enter valid email address";
       }
     }
@@ -48,7 +37,7 @@
       showLoader = true;
       setTimeout(() => {
         showLoader = false;
-        showAlerts("loggined sucessfully", "sucess");
+        showAlerts("Email sent sucessfully", "sucess");
       }, 3000);
 
       console.log("Form submitted:", { email });
