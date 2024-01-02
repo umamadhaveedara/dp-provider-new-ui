@@ -52,9 +52,9 @@
       showLoader = true;
       setTimeout(() => {
         showLoader = false;
-        showAlerts("loggined sucessfully","sucess")
+        showAlerts("loggined sucessfully", "sucess");
       }, 3000);
-      
+
       console.log("Form submitted:", { password, email });
     }
   };
@@ -63,7 +63,6 @@
     e.stopPropagation();
     show = !show;
   };
- 
 </script>
 
 <div>
@@ -75,7 +74,9 @@
     }`}
   >
     <div class="mb-6">
-      <Label for="email" class="mb-2 font-extrabold">Enter Email</Label>
+      <Label for="email" class="mb-2 font-extrabold font-Satoshi"
+        >Enter Email</Label
+      >
       <Input
         type="text"
         id="email"
@@ -90,7 +91,9 @@
       {/if}
     </div>
     <div class="mb-6">
-      <Label for="password" class="mb-2 font-extrabold">Enter Password</Label>
+      <Label for="password" class="mb-2 font-extrabold font-Satoshi"
+        >Enter Password</Label
+      >
       <Input
         type={show ? "text" : "password"}
         id="password"
@@ -100,19 +103,19 @@
         <button
           slot="right"
           on:click={(e) => showPassword(e)}
-          class="pointer-events-auto"
+          class="pointer-events-auto font-Satoshi"
           style="padding:0px;background:white"
         >
           {#if show}
-            <EyeOutline class="w-5 h-4" color="grey"/>
+            <EyeOutline class="w-5 h-4" color="grey" />
           {:else}
-            <EyeSlashOutline class="w-4 h-4" color="grey"/>
+            <EyeSlashOutline class="w-4 h-4" color="grey" />
           {/if}
         </button>
       </Input>
     </div>
     <Button
-      class="bg-loginbtn rounded-md font-bold"
+      class="bg-loginbtn rounded-md font-bold font-Satoshi"
       type="submit"
       style="width:100%"
       bind:disabled={isDisabled}
@@ -124,21 +127,26 @@
       {/if}
     </Button>
     <div class="text-center py-5 text-xs">
-      <div class="py-2 color-black">
-        Don't have an account? <a href="/signup">Sign up</a>
+      <div class="py-2 color-black font-Satoshi">
+        Don't have an account? <a href="/signup" class="font-Satoshi">Sign up</a
+        >
       </div>
-      <div class="text-xs linkcolor"><a href="/forgotpassword">Forgot Password</a></div>
+      <div class="text-xs linkcolor">
+        <a href="/forgotpassword" class="font-Satoshi">Forgot Password</a>
+      </div>
     </div>
   </form>
-
 </div>
 
 <style>
+  body {
+    font-family: "Satoshi", sans-serif !important;
+  }
   .form-wd {
     max-width: 430px;
     margin: 0 auto;
   }
-  .color-black{
+  .color-black {
     color: black;
   }
 </style>
